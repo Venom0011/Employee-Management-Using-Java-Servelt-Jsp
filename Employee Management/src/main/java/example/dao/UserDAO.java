@@ -11,9 +11,9 @@ import java.util.List;
 import example.model.User;
 
 public class UserDAO {
-	private String jdbcURL = "jdbc:oracle:thin:@localhost:1521:XE";
-	private String jdbcUsername = "hr";
-	private String jdbcPassword = "hr";
+	private String jdbcURL = "jdbc:mysql://localhost:3306/abhi?useSSL=false";
+	private String jdbcUsername = "root";
+	private String jdbcPassword = "Abhishek@123";
 
 	private static final String INSERT_USERS_SQL = "INSERT INTO users (fname,lname,salary,department,position, email, mobno) VALUES  (?, ?, ?, ?, ?, ?, ?)";
 	private static final String SELECT_USER_BY_ID = "select fname,lname,salary,department,position, email, mobno from users where id =?";
@@ -27,7 +27,7 @@ public class UserDAO {
 	protected Connection getConnection() {
 		Connection connection = null;
 		try {
-			Class.forName("oracle.jdbc.OracleDriver");
+			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
